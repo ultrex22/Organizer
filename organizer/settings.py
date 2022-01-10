@@ -58,11 +58,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'organizer.urls'
-
+print(BASE_DIR)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            BASE_DIR + '/notes/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
