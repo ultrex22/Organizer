@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tailwind',
-    'theme'
+    'theme',
+    'organizer',
+    'notes',
 ]
 
 TAILWIND_APP_NAME = 'theme'
