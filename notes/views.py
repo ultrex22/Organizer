@@ -19,3 +19,6 @@ def note_detail(request):
 def edit_note(request):
     return render(request, 'edit_note.html')
 
+
+def new_note(request):
+    return render(request, 'new_note.html')
