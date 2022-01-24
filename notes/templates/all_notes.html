@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="xl:w-2/3 md:w-2/3 p-2 my-2 mx-auto">
+        <h1 class="text-center px-6 text-5xl bg-teal-100 text-gray-800 py-3 my-2">My Notes</h1>
+    </div>
+
+    <div class="xl:w-2/3 md:w-2/3 p-3 my-3 mx-auto ">
+        <a href="{% url 'new_note' %}">
+            <button type="button"
+                    class="text-gray bg-teal-100 py-2 px-5 border-6 my-4 focus:outline-none hover:bg-indigo-300 rounded">
+                New
+            </button>
+        </a>
+    </div>
+
+    <a href="{% url 'note_detail' %}">
+
+        {% for note in object_list %}
+            <div>
+            <h1>{{ note.title }}: {{ note.text }} </h1>
+            <br>
+        {% endfor %}
+        </div>
+
+    </a>
+{% endblock %}

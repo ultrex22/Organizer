@@ -17,8 +17,9 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.notes, name='notes'),
-    path('detail/', views.note_detail, name='note_detail'),
-    path('edit/', views.edit_note, name='edit_note'),
-    path('new_note', views.new_note, name='new_note'),
+    path('', views.AllNotesView.as_view(), name='notes'),
+    path('detail/', views.NoteDetailView.as_view(), name='note_detail'),
+    path('new_note', views.NewNoteView, name='new_note'),
+    path('edit/', views.EditNoteView.as_view(), name='edit_note'),
+    path('delete_note', views.DeleteNoteView.as_view(), name='delete_note'),
 ]

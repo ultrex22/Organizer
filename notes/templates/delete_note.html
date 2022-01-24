@@ -5,6 +5,9 @@
         <div class="container px-10 py-24 mx-auto ">
 
                 <div class=" p-4">
+                    <a href="{% url "notes" %}"><button type="submit" name="delete_note" class="text-gray bg-teal-100 py-2 px-5 border-6 my-4 focus:outline-none hover:bg-indigo-300 rounded">
+                        Do you really want to delete this note?
+                    </button></a>
                     <div class="border border-gray-200 p-6 rounded-lg">
                         <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Shooting Stars</h2>
                         <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waist co, subway
@@ -19,11 +22,6 @@
                             tile poke farm. Fingerstache flexitarian street art 8-bit waist co, subway
                             tile poke farm.</p>
                     </div>
-                    <a href=" {% url 'delete_note' %}">
-            <button class="text-gray bg-teal-100 py-2 px-5 border-6 my-4 focus:outline-none hover:bg-indigo-300 rounded">
-                Delete Note
-            </button>
-                    </a>
                 </div>
             </div>
 

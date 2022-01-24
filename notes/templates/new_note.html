@@ -3,9 +3,9 @@
 
 
 {% block content %}
-    <br>
-    <br>
-    <br>
-
-    this is the page for a new note, probably a form??
+    <form action=" {% url 'new_note' %}" method="post">
+    {%  csrf_token %}
+    {{  form }}
+        <button type="submit" value="submit">Save</button>
+    </form>
 {% endblock %}
