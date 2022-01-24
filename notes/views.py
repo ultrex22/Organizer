@@ -1,33 +1,30 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, reverse
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, FormView
+from django.shortcuts import render
+from django.views.generic import ListView, UpdateView, DeleteView, View
+from django.utils.text import slugify
+
 from .forms import AllNotesForm
 from .models import Notes
+
+all_notes = Notes.objects.all().order_by('-date')
 
 
 def home(request):
     return render(request, 'index.html')
 
 
-all_notes = Notes.objects.all().order_by('-date')
-
-
-class AllNotesView(ListView):
-    queryset = Notes.objects.all()
+class NotesView(ListView):
+    queryset = all_notes
     template_name = 'all_notes.html'
 
-    # def get_context_data(self, **kwargs):
-    #     # Call the base implementation first to get a context
-    #     context = super().get_context_data(**kwargs)
-    #     # Add in a QuerySet of all the books
-    #     context['text_sample'] = "sample"
-    #     return context
 
+class NoteDetailView(View):
 
-class NoteDetailView(DetailView):
-    def get(self, request):
+    def get(self, request, slug):
         # more logic here#
-        return render(request, 'note_detail.html')
+        single_note = Notes.objects.get(slug=slug)
+        context = {"single_note": single_note}
+        return render(request, 'note_detail.html', context)
 
 
 class EditNoteView(UpdateView):
@@ -45,11 +42,13 @@ def NewNoteView(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = AllNotesForm(request.POST)
+        print(request.POST)
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
+            new_note = form.save(commit=False)
+            new_note.slug = slugify(request.POST['title'])
+            new_note.save()
             return HttpResponseRedirect('/')
 
     # if a GET (or any other method) we'll create a blank form

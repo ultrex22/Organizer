@@ -6,5 +6,6 @@ from .models import Notes
 class AllNotesForm(ModelForm):
     class Meta:
         model = Notes
-        exclude = ['color', 'id']
+        exclude = ['slug', 'id']
+
 

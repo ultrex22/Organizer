@@ -16,14 +16,19 @@
         </a>
     </div>
 
-    <a href="{% url 'note_detail' %}">
-
+    <section class="text-gray-600 body-font">
         {% for note in object_list %}
-            <div>
-            <h1>{{ note.title }}: {{ note.text }} </h1>
-            <br>
-        {% endfor %}
-        </div>
+            <div class="container px-10 py-10 mx-auto ">
+                <div class=" p-4">
+                    <a href="{% url 'note_detail' note.slug %}">
+                        <div class="{{ note.color }} border border-gray-200 p-6 rounded-lg">
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{{ note.title }}</h2>
+                            <p class="leading-relaxed text-base">{{ note.text }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-    </a>
+        {% endfor %}
+    </section>
 {% endblock %}

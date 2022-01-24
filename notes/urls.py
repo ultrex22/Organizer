@@ -11,14 +11,18 @@ Class-based views
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 """
 
+from django.contrib import admin
 from django.urls import path
 
 from . import views
 
+admin.site.site_header = 'Organizer Admin - Site Header'
+admin.site.index_title = "Organizer - Index Title"
+
 urlpatterns = [
 
-    path('', views.AllNotesView.as_view(), name='notes'),
-    path('detail/', views.NoteDetailView.as_view(), name='note_detail'),
+    path('', views.NotesView.as_view(), name='notes'),
+    path('detail/<slug:slug>', views.NoteDetailView.as_view(), name='note_detail'),
     path('new_note', views.NewNoteView, name='new_note'),
     path('edit/', views.EditNoteView.as_view(), name='edit_note'),
     path('delete_note', views.DeleteNoteView.as_view(), name='delete_note'),

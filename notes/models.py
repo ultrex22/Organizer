@@ -5,12 +5,13 @@ from django.db import models
 
 
 class Notes(models.Model):
-    id = models.CharField(primary_key=True, max_length=255)
     date = models.DateField(auto_now_add=True)
+    slug = models.SlugField(unique=True, db_index=True)
     title = models.CharField(max_length=100)
     text = models.TextField(max_length=1000)
     color = models.CharField(max_length=15,
-                             choices=[('red', 'Red'), ('blu', 'Blue'), ('org', 'Orange'), ('pur', 'Purple')])
+                             choices=[('bg-red-200', 'Red'), ('bg-blue-200', 'Blue'), ('bg-orange-100', 'Orange'),
+                                      ('bg-indigo-200', 'Purple')])
     image = models.ImageField(null=True, blank=True)
 
     class Meta:
