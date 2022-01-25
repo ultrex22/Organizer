@@ -18,7 +18,7 @@
 
     <section class="text-gray-600 body-font">
         {% for note in object_list %}
-            <div class="container px-10 py-10 mx-auto ">
+            <div class="container px-10 py-2 mx-auto ">
                 <div class=" p-4">
                     <a href="{% url 'note_detail' note.slug %}">
                         <div class="{{ note.color }} border border-gray-200 p-6 rounded-lg">

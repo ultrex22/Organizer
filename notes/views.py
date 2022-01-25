@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import ListView, UpdateView, DeleteView, View
 from django.utils.text import slugify
+from django.urls import reverse
 
 from .forms import AllNotesForm
 from .models import Notes
@@ -59,8 +60,12 @@ def NewNoteView(request):
 
 
 class DeleteNoteView(DeleteView):
-    def get(self, request):
-        return render(request, 'delete_note.html')
+    def get(self, request, slug):
+        single_note = Notes.objects.get(slug=slug)
+        context = {"single_note": single_note}
+        return render(request, 'delete_note.html', context)
 
-    def post(self, request):
-        pass
+    def post(self, request, slug):
+        single_note = Notes.objects.get(slug=slug)
+        single_note.delete()
+        return HttpResponseRedirect(reverse('notes'))

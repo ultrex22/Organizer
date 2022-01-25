@@ -3,15 +3,15 @@
 
 
 {% block content %}
-        <form action=" {% url 'new_note' %}" method="post">
-            {% csrf_token %}
+    <form action=" {% url 'new_note' %}" method="post">
+        {% csrf_token %}
 
-            {% for field in form %}
-                <div class="form-control  {% if form.user_name.errors %} errors {% endif %}">
-                    {{ field.label_tag }} {{ field }} {{ field.errors }}
-                </div>
-            {% endfor %}
+        {% for field in form %}
+            <div class="form-control  {% if form.user_name.errors %} errors {% endif %}">
+                {{ field.label_tag }} {{ field }} {{ field.errors }}
+            </div>
+        {% endfor %}
 
-            <button type="submit" value="submit">Save</button>
-        </form>
+        <button type="submit" value="submit">Save</button>
+    </form>
 {% endblock %}

@@ -25,5 +25,5 @@ urlpatterns = [
     path('detail/<slug:slug>', views.NoteDetailView.as_view(), name='note_detail'),
     path('new_note', views.NewNoteView, name='new_note'),
     path('edit/', views.EditNoteView.as_view(), name='edit_note'),
-    path('delete_note', views.DeleteNoteView.as_view(), name='delete_note'),
+    path('delete_note/<slug:slug>', views.DeleteNoteView.as_view(), name='delete_note'),
 ]
