@@ -19,25 +19,6 @@ class NotesView(ListView):
     template_name = 'all_notes.html'
 
 
-class NoteDetailView(View):
-
-    def get(self, request, slug):
-        # more logic here#
-        single_note = Notes.objects.get(slug=slug)
-        context = {"single_note": single_note}
-        return render(request, 'note_detail.html', context)
-
-
-class EditNoteView(UpdateView):
-    def get(self, request):
-        # more logic
-        return render(request, 'edit_note.html')
-
-    # class NewNoteView(FormView):
-    #     def get(self, request):
-    #         return render(request, 'new_note.html')
-
-
 def NewNoteView(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -50,7 +31,7 @@ def NewNoteView(request):
             new_note = form.save(commit=False)
             new_note.slug = slugify(request.POST['title'])
             new_note.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse('notes'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -59,13 +40,34 @@ def NewNoteView(request):
     return render(request, 'new_note.html', {'form': form})
 
 
-class DeleteNoteView(DeleteView):
+class NoteDetailView(View):
+
     def get(self, request, slug):
         single_note = Notes.objects.get(slug=slug)
         context = {"single_note": single_note}
-        return render(request, 'delete_note.html', context)
+        return render(request, 'note_detail.html', context)
 
-    def post(self, request, slug):
-        single_note = Notes.objects.get(slug=slug)
-        single_note.delete()
-        return HttpResponseRedirect(reverse('notes'))
+
+class EditNoteView(UpdateView):
+    model = Notes
+    context_object_name = 'note'
+    fields = ['title', 'text', 'color', 'image']
+    template_name = 'edit_note.html'
+    success_url = '/notes/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class DeleteNoteView(DeleteView):
+    model = Notes
+    context_object_name = 'note'
+    fields = ['title', 'text', 'color', 'image']
+    template_name = 'delete_note.html'
+    success_url = '/notes/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+

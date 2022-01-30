@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
+
+
 {% block content %}
+    <form action=" {% url 'edit_note' note.slug %}" method="post" class="{{ note.color }}">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-control  {% if form.user_name.errors %} errors {% endif %}">
+                {{ field.label_tag }} {{ field }} {{ field.errors }}
+            </div>
+        {% endfor %}
 
-    <section class="text-gray-600 body-font">
-        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-
-            <h1>Edit Note</h1>
-        </div>
-    </section>
+        <button type="submit" value="submit">Save</button>
+    </form>
 {% endblock %}
+
+

@@ -9,7 +9,7 @@ form {
     max-width: 75%;
     padding: 1rem;
     border-radius: 12px;
-    background-color: lightskyblue ;
+    /*background-color: teal ;*/
     box-shadow: 0 2px 8px rgba(0, 0, 0, .26);
 }
 
@@ -18,16 +18,29 @@ button {
     /*cursor: pointer;*/
     padding: .5rem 1.5rem;
     border-radius: 6px;
+
     /*background-color: blueviolet;*/
     /*color: white;*/
     border: 2px solid rgb(59 130 246 / 0.6);
     margin-top: 1rem;
 }
 
+#delete_form {
+    min-width: 15%;
+    max-width: 60%;
+
+}
+
+#delete_form button {
+    min-width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
 button:hover,
 button:active {
     /*background-color: #a157e6;*/
-    border-color:gray;
+    border-color: gray;
 }
 
 .form-control input {

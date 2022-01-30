@@ -9,3 +9,5 @@ class AllNotesForm(ModelForm):
         exclude = ['slug', 'id']
 
 
+
+
