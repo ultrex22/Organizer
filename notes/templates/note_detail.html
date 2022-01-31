@@ -8,6 +8,7 @@
                 <div class="{{ single_note.color }} border border-gray-200 p-6 rounded-lg">
                     <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{{ single_note.title }}</h2>
                     <p class="leading-relaxed text-base">{{ single_note.text }}</p>
+                    <img id="note_image" src="{{ single_note.image.url }}" alt="{{ single_note.image.url }}">
                 </div>
                 <a href=" {% url 'delete_note' single_note.slug %}">
                     <button class="text-gray bg-red-200 py-2 mr-5 px-5 border-6 my-4 focus:outline-none hover:bg-indigo-300 rounded">
