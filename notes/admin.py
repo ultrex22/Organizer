@@ -8,8 +8,8 @@ from .models import Notes
 class NotesAdmin(admin.ModelAdmin):
     site_header = 'Ultimate Organizer'
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('title', 'text', 'color',)
-    list_display = ('title', 'text', 'color')
+    list_filter = ('title', 'text', 'color', 'image')
+    list_display = ('title', 'text', 'color', 'image')
 
 
 admin.site.register(Notes, NotesAdmin)

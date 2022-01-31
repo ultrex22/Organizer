@@ -23,7 +23,7 @@ urlpatterns = [
 
     path('', views.NotesView.as_view(), name='notes'),
     path('detail/<slug:slug>', views.NoteDetailView.as_view(), name='note_detail'),
-    path('new_note', views.NewNoteView, name='new_note'),
+    path('new_note', views.NewNoteView,  name='new_note'),
     path('edit/<slug:slug>', views.EditNoteView.as_view(), name='edit_note'),
     path('delete_note/<slug:slug>', views.DeleteNoteView.as_view(), name='delete_note'),
 ]

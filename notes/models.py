@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 # Create your models here.
 
 
@@ -12,7 +13,7 @@ class Notes(models.Model):
     color = models.CharField(max_length=15,
                              choices=[('bg-red-200', 'Red'), ('bg-blue-200', 'Blue'), ('bg-orange-100', 'Orange'),
                                       ('bg-indigo-200', 'Purple')])
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to="note_files")
 
     class Meta:
         verbose_name = "Note"

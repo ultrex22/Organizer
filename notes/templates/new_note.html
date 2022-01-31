@@ -3,9 +3,8 @@
 
 
 {% block content %}
-    <form action=" {% url 'new_note' %}" method="post">
+    <form class=" bg-teal-100 "action=" {% url 'new_note' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
         {% for field in form %}
             <div class="form-control  {% if form.user_name.errors %} errors {% endif %}">
                 {{ field.label_tag }} {{ field }} {{ field.errors }}
