@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <section class="text-gray-600 body-font">
-        <div class="container mx-auto bg-teal-100 flex px-5 py-24 md:flex-row flex-col items-center">
+    <section class="text-gray-600  body-font">
+        <div class="container rounded-lg mx-auto bg-teal-100 flex px-7 py-24 my-4 md:flex-row flex-col items-center">
             <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Welcome to The Ultimate
                     Organizer App
@@ -11,9 +11,10 @@
                 <p class="mb-8 leading-relaxed">We have all the apps you need to keep your life organized! A quick and
                     colorfull Notes App, an easy to use and thoughtful ToDo App, and of course a beautiful full featured
                     Calendar App. Click on the links above to get started!</p>
+                    <p>Another paragraph here to list all the other features I cannot think of right now. but im sure they are great! I need to fill the text area with some more good stuff.</p>
             </div>
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <img class="object-cover object-center rounded" alt="hero" src="{% static "images/calendar.jpg" %}">
+                <img class=" index-image object-fill pr-2 object-center rounded" alt="hero" src="{% static 'images/calendar.jpg' %}">
             </div>
         </div>
     </section>
@@ -21,7 +22,7 @@
 {% endblock %}
 {% block footer %}
     <footer class="text-gray-600 body-font">
-        <div class="container px-5 py-20 mx-auto flex items-center sm:flex-row flex-col">
+        <div class="container px-5 py-10 mx-auto flex items-center sm:flex-row flex-col">
             <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
                 <span class="ml-3 text-xl">Organizer</span>
             </a>

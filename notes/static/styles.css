@@ -1,4 +1,20 @@
 
+
+
+.bg-index-image{
+    z-index: -1;
+    position: absolute;
+    opacity: 70%;
+    height: max-content;
+    /* width: 100vh; */
+    border: solid gray 1px;
+    width: max-content;
+}
+
+.index-image{
+
+}
+
 form {
     margin: 3rem auto;
     width: 90%;
