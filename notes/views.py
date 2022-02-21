@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, UpdateView, DeleteView, View, CreateView, FormView
 from django.utils.text import slugify
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 from .forms import AllNotesForm
 from .models import Notes

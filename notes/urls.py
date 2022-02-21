@@ -12,7 +12,7 @@ Class-based views
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
@@ -26,4 +26,6 @@ urlpatterns = [
     path('new_note', views.NewNoteView,  name='new_note'),
     path('edit/<slug:slug>', views.EditNoteView.as_view(), name='edit_note'),
     path('delete_note/<slug:slug>', views.DeleteNoteView.as_view(), name='delete_note'),
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ]
