@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'theme',
     'organizer',
     'notes',
+    'accounts'
 ]
 
 TAILWIND_APP_NAME = 'theme'

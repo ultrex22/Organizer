@@ -1,0 +1,27 @@
+<!-- templates/registration/signup.html -->
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+
+    <div class="xl:w-1/3 md:w-2/3 p-2 my-2 mx-auto  ">
+        <h1 class="rounded-lg border-solid border-2 border-teal-300 text-center text-3xl bg-teal-100 text-gray-800 py-3 my-2">
+            Sign up</h1>
+    </div>
+    <div class="container px-10 py-5 xl:w-2/3 md:w-2/3 p-2 my-2 mx-auto  ">
+        <form class="bg-indigo-200 text-gray " method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-control min-w-fit text-left {% if form.user_name.errors %} errors {% endif %}">
+                    {{ field.label_tag }} {{ field }} {{ field.errors }}
+                </div>
+            {% endfor %}
+
+            <button class="text-gray bg-teal-100 py-1 px-5 border-6 my-6 focus:outline-none hover:bg-indigo-300 rounded"
+                    type="submit">Sign Up
+            </button>
+        </form>
+    </div>
+{% endblock %}
