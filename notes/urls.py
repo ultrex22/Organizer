@@ -26,6 +26,6 @@ urlpatterns = [
     path('new_note', views.NewNoteView,  name='new_note'),
     path('edit/<slug:slug>', views.EditNoteView.as_view(), name='edit_note'),
     path('delete_note/<slug:slug>', views.DeleteNoteView.as_view(), name='delete_note'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/', include('django.contrib.auth.urls')),
 
 ]

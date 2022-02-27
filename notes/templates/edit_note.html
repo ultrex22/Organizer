@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 
 
-
 {% block content %}
-    <form action=" {% url 'edit_note' note.slug %}" method="post" class="{{ note.color }}">
-        {% csrf_token %}
-        {% for field in form %}
-            <div class="form-control  {% if form.user_name.errors %} errors {% endif %}">
-                {{ field.label_tag }} {{ field }} {{ field.errors }}
-            </div>
-        {% endfor %}
+    {% if user.is_authenticated %}
+        <form action=" {% url 'edit_note' note.slug %}" method="post" class="{{ note.color }}">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-control  {% if form.user_name.errors %} errors {% endif %}">
+                    {{ field.label_tag }} {{ field }} {{ field.errors }}
+                </div>
+            {% endfor %}
 
-        <button type="submit" value="submit">Save</button>
-    </form>
+            <button type="submit" value="submit">Save</button>
+        </form>
+
+    {% else %}
+        <div class="xl:w-2/3 md:w-2/3 p-2 my-2 mx-auto  ">
+            <h1 class="rounded-lg border-solid border-2 border-teal-300 text-center text-3xl px-6 text-5xl bg-teal-100 text-gray-800 py-3 my-2">
+                You must login to access this page.</h1>
+        </div>
+    {% endif %}
 {% endblock %}
 
 

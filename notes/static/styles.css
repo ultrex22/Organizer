@@ -29,6 +29,16 @@ form {
     box-shadow: 0 2px 8px rgba(0, 0, 0, .26);
 }
 
+/*.login-form {*/
+/*    margin: 3rem auto;*/
+/*    width: 90%;*/
+/*    max-width: 75%;*/
+/*    padding: 1rem;*/
+/*    border-radius: 12px;*/
+/*    background-color: teal ;*/
+/*    box-shadow: 0 2px 8px rgba(0, 0, 0, .26);*/
+/*}*/
+
 
 button {
     /*cursor: pointer;*/

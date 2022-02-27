@@ -2,38 +2,32 @@
 
 {% block content %}
 
-    <section class="text-gray-600 body-font">
-        <div class="container px-10 py-24 mx-auto ">
-            <div class=" p-4">
-                <form id="delete_form" action="{% url 'delete_note' note.slug %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" name="delete_note"
-                            class="text-gray bg-teal-100 py-2 px-5 border-6 my-4 focus:outline-none hover:bg-indigo-300 rounded">
-                        Do you really want to DELETE this note?
-                    </button>
-                </form>
+    {% if user.is_authenticated %}
+        <section class="text-gray-600 body-font">
+            <div class="container px-10 py-24 mx-auto ">
+                <div class=" p-4">
+                    <form id="delete_form" action="{% url 'delete_note' note.slug %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="delete_note"
+                                class="text-gray bg-teal-100 py-2 px-5 border-6 my-4 focus:outline-none hover:bg-indigo-300 rounded">
+                            Do you really want to DELETE this note?
+                        </button>
+                    </form>
 
-                <div class=" {{ note.color }} border border-gray-200 p-6 rounded-lg">
-                    <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{{ note.title }}</h2>
-                    <p class="leading-relaxed text-base">{{ note.text }}</p>
-                    <img id="note_image" src="{{ note.image.url }}" alt="{{ note.image.url }}">
+                    <div class=" {{ note.color }} border border-gray-200 p-6 rounded-lg">
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{{ note.title }}</h2>
+                        <p class="leading-relaxed text-base">{{ note.text }}</p>
+                        <img id="note_image" src="{{ note.image.url }}" alt="{{ note.image.url }}">
+                    </div>
                 </div>
             </div>
+        </section>
+
+    {% else %}
+        <div class="xl:w-2/3 md:w-2/3 p-2 my-2 mx-auto  ">
+            <h1 class="rounded-lg border-solid border-2 border-teal-300 text-center text-3xl px-6 text-5xl bg-teal-100 text-gray-800 py-3 my-2">
+                You must login to access this page.</h1>
         </div>
-    </section>
+    {% endif %}
+
 {% endblock %}
-{#    #}
-{##}
-{#    <form action=" {% url 'delete_note' note.slug %}" method="post">#}
-{#        {% csrf_token %}#}
-{#        {% for field in form %}#}
-{#            <div class="form-control  {% if form.user_name.errors %} errors {% endif %}">#}
-{#                {{ field.label_tag }} {{ field }} {{ field.errors }}#}
-{#            </div>#}
-{#        {% endfor %}#}
-{#        <button type="submit" value="submit">Do you really want to DELETE this note?</button>#}
-{#    </form>#}
-{#{% endblock %}#}
-{##}
-{##}
-{##}

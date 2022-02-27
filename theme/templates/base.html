@@ -6,7 +6,7 @@
 
 <head>
     {% block title %}
-    <title>Ultimate Organizer App</title>
+        <title>Ultimate Organizer App</title>
     {% endblock %}
 
     <meta charset="UTF-8">
@@ -18,42 +18,70 @@
 
 </head>
 
-    <img class="bg-index-image" src="{% static '/images/pexels-tamanna-rumee-8749089.jpg' %}" alt="background image">
+<img class="bg-index-image" src="{% static '/images/pexels-tamanna-rumee-8749089.jpg' %}" alt="background image">
 
-    <header class="text-gray-600 body-font">
-        <div class="container border-2 border-gray-300 rounded-lg mx-auto flex flex-wrap p-3 mb-4 flex-col md:flex-row items-center bg-gray-50">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+<header class="text-gray-600 body-font">
+    <div class="container border-2 border-gray-300 rounded-lg mx-auto flex flex-wrap p-3 mb-4 flex-col md:flex-row items-center bg-gray-50">
+        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
 
-                <img src="https://img.icons8.com/color/48/000000/unchecked-circle.png" />
-                <a href=" {% url 'home' %}"><span
-                        class="ml-3 text-xl mb-8 text-gray-900 mr-5 hover:text-purple-400">Organizer</span></a>
-            </a>
-            <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                <a href='{% url "notes" %}' class="mr-7 hover:text-gray-900">My Notes</a>
-                <a class="mr-7 hover:text-gray-900">ToDo List</a>
-                <a class="mr-7 hover:text-gray-900">Calendar</a>
+            <img src="https://img.icons8.com/color/48/000000/unchecked-circle.png"/>
+            <a href=" {% url 'home' %}"><span
+                    class="ml-3 text-xl mb-8 text-gray-900 mr-5 hover:text-purple-400">Organizer</span></a>
+        </a>
 
-            </nav>
-            <a href="{% url 'login' %}">
-            <button
-                class="inline-flex  items-center bg-teal-100 border-0 py-1 mr-7 px-3 focus:outline-none hover:bg-teal-200 rounded text-base mt-4 md:mt-0">
-                Login
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </button>
+        {% if user.is_authenticated %}
+        <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-lg justify-center">
+            <a href='{% url "notes" %}' class="mr-7 hover:text-gray-900">My Notes</a>
+            <a href="#" class="mr-7 hover:text-gray-900">ToDo List</a>
+            <a href="#" class="mr-7 hover:text-gray-900">Calendar</a>
+        </nav>
+        {% else %}
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            <div class=" mr-7">
+                Welcome {{ user.username | upper }}!
+            </div>
+            <p>
+                <a href="{% url 'logout' %}">
+                    <button
+                            class="inline-flex  items-center bg-teal-100 border-0 py-1 px-3 focus:outline-none hover:bg-teal-200 rounded text-base mt-4 md:mt-0">
+                        Logout
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                             stroke-width="2"
+                             class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
                 </a>
-        </div>
-    </header>
+            </p>
+        {% else %}
+            <div class=" mr-7">
+                <p>You are not logged in!</p>
+            </div>
+            <a href="{% url 'login' %}">
+                <button
+                        class="inline-flex  items-center bg-teal-100 border-0 py-1 mx-7 px-3 focus:outline-none hover:bg-teal-200 rounded text-base mt-4 md:mt-0">
+                    Login
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                         stroke-width="2"
+                         class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </a>
+        {% endif %}
 
-    <body>
-        {% block content %}
-        {% endblock %}
-    </body>
-    <footer>
-        {% block footer %}
-        {% endblock %}
-    </footer>
+    </div>
+</header>
+
+<body>
+{% block content %}
+{% endblock %}
+</body>
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
 
 </html>

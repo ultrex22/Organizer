@@ -66,7 +66,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR + '/notes/templates'
+            BASE_DIR + '/notes/templates',
+            BASE_DIR + '/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -154,3 +155,6 @@ MEDIA_URL = "/user-media/"
 print(f"media_root= {MEDIA_ROOT}")
 print(f"media_url= {MEDIA_URL}")
 print(f"static file dirs= {STATICFILES_DIRS}")
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
